@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FilmXXIX</string>
+
+    //Content Description
+    <string name="contentDes_movies">movie poster</string>
+    <string name="contentDes_duration">movie duration</string>
+    <string name="contentDes_share">share film</string>
+    <string name="contentDes_favorite">favorite button</string>
+    <string name="home_page">Home Page</string>
+    <string name="search_hint">Title of the film..</string>
+    <string name="search_nihil">The film is not found.</string>
+
+    //Tab
+    <string name="movies_tab">Movies</string>
+    <string name="tvshows_tab">TV Shows</string>
+</resources>

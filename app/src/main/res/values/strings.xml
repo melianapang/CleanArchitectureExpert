@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">FilmXXIX</string>
+    <string name="motto">Stream your movies here and feel the vibes.</string>
+
+
+    //Content Description
+    <string name="contentDes_movies">movie poster</string>
+    <string name="contentDes_duration">movie duration</string>
+    <string name="contentDes_share">share film</string>
+    <string name="contentDes_favorite">favorite button</string>
+    <string name="home_page">Home Page</string>
+    <string name="search_hint">Title of the film..</string>
+    <string name="search_nihil">The film is not found.</string>
+
+    //Tab
+    <string name="movies_tab">Movies</string>
+    <string name="tvshows_tab">TV Shows</string>
+
+    //FavoriteActivity
+    <string name="favorite_page">Your Favorites</string>
+    <string name="remove_favorite">deleted from your favorites</string>
+    <string name="add_favorite">added to your favorites</string>
+
+
+    //DetailActivity
+    <string name="overview_title">Overview</string>
+    <string name="share_button">Share</string>
+    <string name="share_title">Share this film to your beloved ones.</string>
+    <string name="share_text">Go and watch %s now!</string>
+    <string name="delete_fav">Delete from Favorite</string>
+    <string name="add_fav">Add to your Favorite</string>
+    <plurals name="durations">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+    <plurals name="numOfEps">
+        <item quantity="one">%d Episode</item>
+        <item quantity="other">%d Episodes</item>
+    </plurals>
+    <plurals name="numOfSeasons">
+        <item quantity="one">%d Season</item>
+        <item quantity="other">%d Seasons</item>
+    </plurals>
+    <string name="title_favorite">Favorites</string>
+
+</resources>
