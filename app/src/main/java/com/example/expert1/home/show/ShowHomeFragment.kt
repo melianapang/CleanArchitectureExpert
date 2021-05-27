@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.core.domain.model.Show
 import com.example.expert1.R
 import com.example.core.presentation.ShowAdapter
+import com.example.core.valueobject.Status
 import com.example.expert1.databinding.FragmentHomeShowBinding
 import com.example.expert1.detail.DetailActivity
 import com.example.expert1.home.HomeViewModel
@@ -107,13 +108,20 @@ class ShowHomeFragment : Fragment() {
 
     private fun generateDataShow(){
         homeViewModel.getTvShows().observe(viewLifecycleOwner, { listShows ->
-            showLoading(true)
-            if (listShows.message != null) {
-                showLoading(false)
-                showToast(listShows.message!!)
+            if (listShows != null) {
+                when (listShows.status) {
+                    Status.LOADING -> showLoading(true)
+                    Status.SUCCESS -> if (listShows.data != null) {
+                        rvAdapter.setData(listShows.data)
+                        rvAdapter.notifyDataSetChanged()
+                        showLoading(false)
+                    }
+                    Status.ERROR -> {
+                        showLoading(false)
+                        showToast(listShows.message!!)
+                    }
+                }
             } else {
-                rvAdapter.setData(listShows.data)
-                rvAdapter.notifyDataSetChanged()
                 showLoading(false)
             }
         })

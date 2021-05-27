@@ -25,33 +25,33 @@ val databaseModule = module {
         val passphrase: ByteArray = SQLiteDatabase.getBytes("expert".toCharArray())
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
-            androidContext(),
-            FilmDatabase::class.java, "FilmDatabase.db"
+                androidContext(),
+                FilmDatabase::class.java, "FilmDatabase.db"
         ).fallbackToDestructiveMigration()
-            .openHelperFactory(factory)
-            .build()
+                .openHelperFactory(factory)
+                .build()
     }
 }
 
 val networkModule = module {
     single {
-        val hostname = "tourism-api.dicoding.dev"
+        val hostname = "api.themoviedb.org"
         val certificatePinner = CertificatePinner.Builder()
-            .add(hostname, "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")
-            .build()
+                .add(hostname, "sha256/+vqZVAzTqUP8BGkfl88yU7SQ3C8J2uNEa55B7RZjEg0=")
+                .build()
         OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
-            .certificatePinner(certificatePinner)
-            .build()
+                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner)
+                .build()
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(get())
-            .build()
+                .baseUrl("https://api.themoviedb.org/3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(get())
+                .build()
         retrofit.create(ApiEndPoint::class.java)
     }
 }
@@ -62,9 +62,9 @@ val repositoryModule = module {
     factory { AppExecutors() }
     single<IRepository> {
         Repository(
-            get(),
-            get(),
-            get()
+                get(),
+                get(),
+                get()
         )
     }
 }

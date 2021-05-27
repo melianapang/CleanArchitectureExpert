@@ -27,10 +27,6 @@ android {
             minifyEnabled false
             consumerProguardFiles 'proguard-rules.pro'
         }
-        debug {
-            minifyEnabled true
-            consumerProguardFiles 'proguard-rules.pro'
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

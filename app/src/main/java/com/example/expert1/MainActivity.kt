@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     companion object {
-        private val TAB_TITLES = intArrayOf(
-            R.string.movies_tab,
-            R.string.tvshows_tab
+        private val TAB_TITLES = arrayOf(
+            "MOVIES",
+            "TV SHOWS"
         )
     }
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val sectionsPagerAdapter = HomeSectionPagerAdapter(this)
         binding.viewPager.adapter = sectionsPagerAdapter
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
+            tab.text = TAB_TITLES[position]
         }.attach()
         supportActionBar?.elevation = 0f
     }

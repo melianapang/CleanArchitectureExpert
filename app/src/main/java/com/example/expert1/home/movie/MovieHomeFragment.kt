@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.core.domain.model.Movie
 import com.example.expert1.R
 import com.example.core.presentation.MovieAdapter
+import com.example.core.valueobject.Status
 import com.example.expert1.databinding.FragmentHomeMovieBinding
 import com.example.expert1.detail.DetailActivity
 import com.example.expert1.home.HomeViewModel
@@ -108,13 +109,20 @@ class MovieHomeFragment : Fragment() {
 
     private fun generateData() {
         homeViewModel.getFilm().observe(this, { listFilm ->
-            showLoading(true)
-            if (listFilm.message != null) {
-                showLoading(false)
-                showToast(listFilm.message!!)
+            if (listFilm != null) {
+                when (listFilm.status) {
+                    Status.LOADING -> showLoading(true)
+                    Status.SUCCESS -> if (listFilm.data != null) {
+                        rvAdapter.setData(listFilm.data)
+                        rvAdapter.notifyDataSetChanged()
+                        showLoading(false)
+                    }
+                    Status.ERROR -> {
+                        showLoading(false)
+                        showToast(listFilm.message!!)
+                    }
+                }
             } else {
-                rvAdapter.setData(listFilm.data)
-                rvAdapter.notifyDataSetChanged()
                 showLoading(false)
             }
         })
